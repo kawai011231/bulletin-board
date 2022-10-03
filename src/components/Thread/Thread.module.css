@@ -1,0 +1,41 @@
+.thread {
+  background-color: aliceblue;
+  border: 1px solid #000;
+  width: 90%;
+  margin: 40px auto;
+  border-radius: 10px;
+  padding: 24px;
+}
+
+.threadTitle {
+  font-size: 24px;
+}
+.threadTitle span {
+  color: red;
+}
+
+.userName b {
+  color: green;
+}
+
+.nameForm {
+  display: flex;
+}
+.nameForm p {
+  margin: 0;
+}
+
+.commentForm {
+  padding-top: 24px;
+  padding-bottom: 24px;
+}
+.commentForm p {
+  margin: 0;
+}
+.commentForm textarea {
+  height: 100px;
+  width: 500px;
+}
+.commentForm button {
+  display: block;
+}
