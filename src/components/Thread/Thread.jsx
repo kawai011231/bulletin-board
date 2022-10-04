@@ -1,5 +1,5 @@
 import classes from "./Thread.module.css";
-import db from "../../firebase.env";
+import db from "../../firebase";
 import { useEffect, useState } from "react";
 import { collection, getDocs } from "firebase/firestore";
 
