@@ -1,5 +1,5 @@
 import classes from "./Thread.module.css";
-import db from "../../firebase";
+import db from "../../firebase.env";
 import { useEffect, useState } from "react";
 import { collection, getDocs } from "firebase/firestore";
 
@@ -12,22 +12,21 @@ export const Thread = () => {
       setPosts(snapShot.docs.map((doc) => doc.data()));
     });
   }, []);
+  console.log(posts.length);
 
   return (
     <div className={classes.thread}>
-      {posts.map((post) => (
-        <div key={post.title}>
-          <h2 className={classes.threadTitle}>
-            お題：<span>{post.title}</span>
-          </h2>
-          <div className={classes.ThreadComent}>
-            <p className={classes.userName}>
-              1 {post.name}:<b>{post.text}</b>
-              {/* <span>{post.timestamp}</span> */}
-            </p>
-          </div>
-        </div>
-      ))}
+      <h2 className={classes.threadTitle}>
+        お題：<span>タイトル</span>
+      </h2>
+      <ol className={classes.ThreadComent}>
+        {posts.map((post) => (
+          <li className={classes.userName} key={post.id}>
+            {post.name}:<b>{post.text}</b>
+            {/* <span>{post.timestamp}</span> */}
+          </li>
+        ))}
+      </ol>
       <form>
         <div className={classes.nameForm}>
           <p>おなまえ</p>
