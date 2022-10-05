@@ -15,12 +15,7 @@ export const Thread = () => {
       .onSnapshot((snapshot) => {
         setPosts(snapshot.docs.map((doc) => doc.data()));
       });
-    db.collection("posts")
-      .get()
-      .then((snap) => {
-        setSize(snap.size);
-      });
-  }, [text]);
+  }, []);
 
   const handleNameChange = (e) => {
     setName(() => e.target.value);
@@ -40,6 +35,11 @@ export const Thread = () => {
     });
     setName("");
     setText("");
+    db.collection("posts")
+      .get()
+      .then((snap) => {
+        setSize(snap.size);
+      });
   };
 
   return (
@@ -49,9 +49,10 @@ export const Thread = () => {
       </h2>
       <ul className={classes.ThreadComent}>
         {posts.map((post) => (
-          <li className={classes.userName} key={post.index}>
+          <li className={classes.comment} key={post.index}>
             {post.index}
-            {post.name}:<b>{post.text}</b>
+            {post.name}:<b></b>
+            <p>{post.text}</p>
             {/* <span>{post.createdAt}</span> */}
           </li>
         ))}
