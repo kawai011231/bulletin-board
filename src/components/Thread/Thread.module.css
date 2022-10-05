@@ -8,6 +8,7 @@
 }
 .ThreadComent {
   list-style: none;
+  padding-left: 0;
 }
 .threadTitle {
   font-size: 24px;
