@@ -1,41 +1,77 @@
 import classes from "./Thread.module.css";
-import db from "../../firebase";
+import { db } from "../../firebase";
 import { useEffect, useState } from "react";
-import { collection, getDocs } from "firebase/firestore";
+import firebase from "firebase/compat/app";
 
 export const Thread = () => {
   const [posts, setPosts] = useState([]);
+  const [name, setName] = useState("");
+  const [text, setText] = useState("");
+  const [size, setSize] = useState();
+
   useEffect(() => {
-    const postData = collection(db, "posts");
-    getDocs(postData).then((snapShot) => {
-      // console.log(snapShot.docs.map((doc) => doc.data()));
-      setPosts(snapShot.docs.map((doc) => doc.data()));
+    db.collection("posts")
+      .orderBy("createdAt")
+      .onSnapshot((snapshot) => {
+        setPosts(snapshot.docs.map((doc) => doc.data()));
+      });
+    db.collection("posts")
+      .get()
+      .then((snap) => {
+        setSize(snap.size);
+      });
+  }, [text]);
+
+  const handleNameChange = (e) => {
+    setName(() => e.target.value);
+  };
+
+  const handleTextChange = (e) => {
+    setText(() => e.target.value);
+  };
+
+  const handleClick = (e) => {
+    e.preventDefault();
+    db.collection("posts").add({
+      name: name,
+      text: text,
+      createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+      index: size + 1,
     });
-  }, []);
-  console.log(posts.length);
+    setName("");
+    setText("");
+  };
 
   return (
     <div className={classes.thread}>
       <h2 className={classes.threadTitle}>
         お題：<span>タイトル</span>
       </h2>
-      <ol className={classes.ThreadComent}>
+      <ul className={classes.ThreadComent}>
         {posts.map((post) => (
-          <li className={classes.userName} key={post.id}>
+          <li className={classes.userName} key={post.index}>
+            {post.index}
             {post.name}:<b>{post.text}</b>
-            {/* <span>{post.timestamp}</span> */}
+            {/* <span>{post.createdAt}</span> */}
           </li>
         ))}
-      </ol>
+      </ul>
       <form>
         <div className={classes.nameForm}>
-          <p>おなまえ</p>
-          <input type="text" />
+          <p>名前</p>
+          <input onChange={handleNameChange} type="text" value={name} />
         </div>
         <div className={classes.commentForm}>
           <p>このスレッドに書き込む</p>
-          <textarea name="" id="" cols="30" rows="10"></textarea>
-          <button>投稿</button>
+          <textarea
+            onChange={handleTextChange}
+            name=""
+            id=""
+            cols="30"
+            rows="10"
+            value={text}
+          ></textarea>
+          <button onClick={handleClick}>投稿</button>
         </div>
       </form>
     </div>
