@@ -45,7 +45,7 @@ export const Thread = () => {
   return (
     <div className={classes.thread}>
       <h2 className={classes.threadTitle}>
-        お題：<span>タイトル</span>
+        お題：<span>HOMEYについて</span>
       </h2>
       <ul className={classes.ThreadComent}>
         {posts.map((post) => (
