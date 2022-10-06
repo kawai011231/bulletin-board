@@ -8,6 +8,7 @@ export const Thread = () => {
   const [name, setName] = useState("");
   const [text, setText] = useState("");
   const [size, setSize] = useState();
+  aa;
 
   useEffect(() => {
     db.collection("posts")
