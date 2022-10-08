@@ -6,46 +6,9 @@
   border-radius: 10px;
   padding: 24px;
 }
-.ThreadComent {
-  list-style: none;
-  padding-left: 0;
-  /* display: flex;
-  flex-direction: column-reverse; */
-}
 .threadTitle {
   font-size: 24px;
 }
 .threadTitle span {
   color: red;
-}
-
-.comment {
-  padding-bottom: 8px;
-}
-.comment p {
-  color: green;
-  margin: 0;
-}
-
-.nameForm {
-  display: flex;
-}
-.nameForm p {
-  margin: 0;
-}
-
-.commentForm {
-  padding-top: 24px;
-  padding-bottom: 24px;
-}
-.commentForm p {
-  margin: 0;
-}
-.commentForm textarea {
-  height: 100px;
-  max-width: 500px;
-  width: 100%;
-}
-.commentForm button {
-  display: block;
 }

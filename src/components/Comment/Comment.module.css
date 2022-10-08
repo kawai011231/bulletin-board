@@ -1,0 +1,13 @@
+.ThreadComent {
+  list-style: none;
+  padding-left: 0;
+  /* display: flex;
+  flex-direction: column-reverse; */
+}
+.comment {
+  padding-bottom: 8px;
+}
+.comment p {
+  color: green;
+  margin: 0;
+}
