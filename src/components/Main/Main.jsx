@@ -1,9 +1,9 @@
 import { Thread } from "../Thread/Thread";
 
-export const Main = () => {
+export const Main = (props) => {
   return (
     <main>
-      <Thread />
+      <Thread title={props.title} />
     </main>
   );
 };
