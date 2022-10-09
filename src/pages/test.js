@@ -12,7 +12,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header />
-      <Main title="人生とは" thread="corona" />
+      <Main title="テスト" thread="test" />
     </div>
   );
 }

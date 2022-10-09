@@ -3,17 +3,17 @@ import { db } from "../../firebase";
 import { useEffect, useState } from "react";
 import firebase from "firebase/compat/app";
 
-export const Form = () => {
+export const Form = (props) => {
   const [size, setSize] = useState();
   const [name, setName] = useState("");
   const [text, setText] = useState("");
   useEffect(() => {
-    db.collection("posts")
+    db.collection(`${props.thread}`)
       .get()
       .then((snap) => {
         setSize(snap.size);
       });
-  }, [db]);
+  }, [text]);
   const handleNameChange = (e) => {
     setName(() => e.target.value);
   };
@@ -24,7 +24,7 @@ export const Form = () => {
 
   const handleClick = (e) => {
     e.preventDefault();
-    db.collection("posts").add({
+    db.collection(`${props.thread}`).add({
       name: name,
       text: text,
       createdAt: firebase.firestore.FieldValue.serverTimestamp(),

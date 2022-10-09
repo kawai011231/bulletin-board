@@ -2,16 +2,16 @@ import { useEffect, useState } from "react";
 import { db } from "../../firebase";
 import classes from "./Comment.module.css";
 
-export const Comment = () => {
+export const Comment = (props) => {
   const [posts, setPosts] = useState([]);
   const [size, setSize] = useState();
   useEffect(() => {
-    db.collection("posts")
+    db.collection(`${props.thread}`)
       .orderBy("createdAt")
       .onSnapshot((snapshot) => {
         setPosts(snapshot.docs.map((doc) => doc.data()));
       });
-    db.collection("posts")
+    db.collection(`${props.thread}`)
       .get()
       .then((snap) => {
         setSize(snap.size);

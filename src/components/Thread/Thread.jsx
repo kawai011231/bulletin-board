@@ -8,8 +8,8 @@ export const Thread = (props) => {
       <h2 className={classes.threadTitle}>
         お題：<span>{props.title}</span>
       </h2>
-      <Comment />
-      <Form />
+      <Comment thread={props.thread} />
+      <Form thread={props.thread} />
     </div>
   );
 };
