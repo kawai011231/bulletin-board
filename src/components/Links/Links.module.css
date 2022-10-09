@@ -1,0 +1,8 @@
+.linksWrap {
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+}
+.link {
+  margin-top: 8px;
+}
