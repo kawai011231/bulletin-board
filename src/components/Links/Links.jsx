@@ -6,6 +6,7 @@ export const Links = (props) => {
     <div className={classes.linksWrap}>
       <LinkElement link="/corona" linkText="ころなかーい!!!" />
       <LinkElement link="/goodes" linkText="女神の集まり" />
+      <LinkElement link="/robo" linkText="ロボ" />
       <LinkElement link="/test" linkText="テスト" />
     </div>
   );
