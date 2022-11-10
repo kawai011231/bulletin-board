@@ -23,15 +23,23 @@ export const Form = (props) => {
   };
 
   const handleClick = (e) => {
-    e.preventDefault();
-    db.collection(`${props.thread}`).add({
-      name: name,
-      text: text,
-      createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-      index: size + 1,
-    });
-    setName("");
-    setText("");
+    if (name.length === 0 && text.length === 0) {
+      alert("名前とテキストを入力してください");
+    } else if (name.length === 0 || text.length > 0) {
+      alert("名前を入力してください");
+    } else if (name.length > 0 || text.length === 0) {
+      alert("テキストを入力してください");
+    } else {
+      e.preventDefault();
+      db.collection(`${props.thread}`).add({
+        name: name,
+        text: text,
+        createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+        index: size + 1,
+      });
+      setName("");
+      setText("");
+    }
   };
 
   return (
